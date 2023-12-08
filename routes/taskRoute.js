@@ -1,5 +1,5 @@
 const express = require("express")
-const taskModel = require("../models/taskModel")
+const taskModel = require("../models/taskModel.js")
 const taskRoute = express.Router()
 
 taskRoute.get("/",async(req,res)=>{
