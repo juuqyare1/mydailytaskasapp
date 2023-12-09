@@ -8,9 +8,7 @@ taskRoute.get("/",async(req,res)=>{
 })
 
 taskRoute.post("/",async(req,res)=>{
-    const newtask = new taskModel({
-        title, date, finished
-    })
+    const newtask = new taskModel(req.body)
     await newtask.save()
     res.statusCode(201).json("tasks was added")
 })
