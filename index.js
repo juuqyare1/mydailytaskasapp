@@ -8,4 +8,4 @@ app.listen(1011,()=>{
     console.log("server is running ");
 })
 
-app.use("/test",taskRoute)
+app.use("/",taskRoute)
