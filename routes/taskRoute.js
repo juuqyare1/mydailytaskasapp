@@ -4,24 +4,24 @@ const taskRoute = express.Router()
 
 taskRoute.get("/",async(req,res)=>{
     const tasklist = await taskModel.find()
-    res.json(tasklist)
+    res.status(200).json(tasklist)
 })
 
 taskRoute.post("/",async(req,res)=>{
     const newtask = new taskModel(req.body)
     await newtask.save()
-    res.json("tasks was added")
+    res.status(201).json("tasks was added")
 })
 
 taskRoute.put("/:id",async(req,res)=>{
     const {id}=req.params
     const updtask = await taskModel.findByIdAndUpdate(id,req.body,{new:true})
-    res.json({status:"task wa updated",updtask})
+    res.status(200).json({status:"task wa updated",updtask})
 })
 taskRoute.delete("/:id",async(req,res)=>{
     const {id}=req.params
     const deltask = await taskModel.findByIdAndDelete(id)
-    res.json({status:"task was deleted"})
+    res.status(200).json({status:"task was deleted"})
 })
 
 module.exports= taskRoute
