@@ -15,5 +15,5 @@ const tasksSchema = new mongoose.Schema({
     }
 })
 
-const taskModel = mongoose.model("tasks",tasksSchema)
+const taskModel = mongoose.model("dailytaskasapp",tasksSchema)
 module.exports = taskModel
