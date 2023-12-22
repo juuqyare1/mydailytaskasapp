@@ -8,14 +8,26 @@ taskRoute.get("/",async(req,res)=>{
 })
 
 taskRoute.post("/",async(req,res)=>{
-    const newtask = new taskModel(req.body)
-    await newtask.save()
-    res.status(201).json("tasks was added")
+    const {title , date , finished }=(req.body)
+    const newtask = new taskModel({
+        
+        title , date , finished
+    })
+    const task = newtask.save();
+    res.status(201).json(task)
 })
 
 taskRoute.put("/:id",async(req,res)=>{
-    const {id}=req.params
-    const updtask = await taskModel.findByIdAndUpdate(id,req.body,{new:true})
+    const {title , date , finished }=(req.body)
+   const task = await taskModel.findByIdAndUpdate(req.params.id)
+   if (task) {
+    task.title = title
+    task.date = date
+    task.finished =finished
+    const updatedtask = await task.save();
+    res.status(200).json(updatedtask)
+   }
+    
     res.status(200).json({status:"task wa updated",updtask})
 })
 taskRoute.delete("/:id",async(req,res)=>{
