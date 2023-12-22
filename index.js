@@ -4,7 +4,7 @@ const taskRoute = require("./routes/taskRoute.js")
 const app= express()
 app.use(express.json())
 DBconnect()
-app.listen(1011,()=>{
+app.listen(1010,()=>{
     console.log("server is running ");
 })
 
