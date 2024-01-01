@@ -27,7 +27,7 @@ taskRoute.put("/:id",async(req,res)=>{
     const updatedtask = await task.save();
     res.status(200).json(updatedtask)
    }
-    
+
     res.status(200).json({status:"task wa updated",updtask})
 })
 taskRoute.delete("/:id",async(req,res)=>{
